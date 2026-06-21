@@ -1,79 +1,79 @@
 const BASE_URL =
-    "https://dummyjson.com";
+  "https://dummyjson.com";
 
 export async function getProducts() {
 
-    const response =
-        await fetch(
-            `${BASE_URL}/products?limit=500`
-        );
-
-    if (!response.ok) {
-        throw new Error("Fetch failed");
-    }
-
-    const data =
-        await response.json();
-
-    return data.products.map(
-        ({
-            id,
-            title,
-            description,
-            price,
-            thumbnail,
-            category,
-            rating
-        }) => ({
-            id,
-            title,
-            description,
-            price,
-            image: thumbnail,
-            category,
-            rating
-        })
+  const response =
+    await fetch(
+      `${BASE_URL}/products?limit=500`
     );
+
+  if(!response.ok){
+    throw new Error("Fetch failed");
+  }
+
+  const data =
+    await response.json();
+
+  return data.products.map(
+    ({
+      id,
+      title,
+      description,
+      price,
+      thumbnail,
+      category,
+      rating
+    }) => ({
+      id,
+      title,
+      description,
+      price,
+      image: thumbnail,
+      category,
+      rating
+    })
+  );
 }
 
-export async function getCategories() {
+export async function getCategories(){
 
-    const response =
-        await fetch(
-            `${BASE_URL}/products/categories`
-        );
+  const response =
+    await fetch(
+      `${BASE_URL}/products/categories`
+    );
 
-    if (!response.ok) {
-        throw new Error("Category fetch failed");
-    }
+  if(!response.ok){
+    throw new Error("Category fetch failed");
+  }
 
-    return response.json();
+  return response.json();
 }
 
-export async function getProduct(id) {
+export async function getProduct(id){
 
-    const response =
-        await fetch(
-            `${BASE_URL}/products/${id}`
-        );
+  const response =
+    await fetch(
+      `${BASE_URL}/products/${id}`
+    );
 
-    if (!response.ok) {
-        throw new Error("Product fetch failed");
-    }
+  if(!response.ok){
+    throw new Error("Product fetch failed");
+  }
 
-    return response.json();
+  return response.json();
 }
 
-export async function getData() {
+export async function getData(){
 
-    const [products, categories] =
-        await Promise.all([
-            getProducts(),
-            getCategories()
-        ]);
+  const [products,categories] =
+    await Promise.all([
+      getProducts(),
+      getCategories()
+    ]);
 
-    return {
-        products,
-        categories
-    };
+  return {
+    products,
+    categories
+  };
 }

@@ -2,7 +2,7 @@
 // selecting DOm element 
 
 import { getData } from "./api.js";
-import { renderCategories, renderProducts, renderStats } from "./render.js";
+import { renderCategories, renderProducts, renderStats } from "./render";
 
 const productsContainer = document.getElementById("productsContainer");
 const categoryFilter = document.getElementById("categoryFilter");
