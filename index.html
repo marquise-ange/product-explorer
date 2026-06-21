@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product explorer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./CSS/style.css">
 </head>
+
 <body>
-    
+    <header>
+        <h1>Product Explorer</h1>
+        <div class="controls">
+
+            <input type="text" id="searchInput" placeholder="search products..">
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+            </select>
+
+        </div>
+
+    </header>
+    <main>
+        <div id="loading" class="state">
+            loading product....
+        </div>
+
+        <div id="error" class="state">
+            <p>something is wrong</p>
+            <button id="retryBtn">retry</button>
+        </div>
+        <div id="empty" class="state hidden">
+            No Products fund.
+        </div>
+        <section id="productsContainer" class="products-grid">
+        </section>
+
+    </main>
+
+    <div id="productModal" class="modal hidden">
+        <div class="modal content">
+
+            <button id="closeModal">
+                ✕
+
+            </button>
+
+            <div id="ProductDetails"></div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
 </body>
+
 </html>
